@@ -7,11 +7,13 @@ import { HeaderComponent } from './Components/header/header.component';
 import { SideBarComponent } from './Components/side-bar/side-bar.component';
 import { StarsComponent } from './Components/stars/stars.component';
 
-import { ProductListComponent } from './Components/Orders/product-list/product-list.component';
 import { FormsModule } from '@angular/forms';
 import { LightBoxDirective } from './Directives/light-box.directive';
 import { InputFieldDirective } from './Directives/input-field.directive';
 import { USDtoEGPPipe } from './Pipes/usdto-egp.pipe';
+import { ProductTableComponent } from './Components/product-table/product-table.component';
+import { OrderComponent } from './Components/Orders/order.component';
+import { OrderTableComponent } from './Components/order-table/order-table.component';
 
 @NgModule({
   declarations: [
@@ -19,10 +21,12 @@ import { USDtoEGPPipe } from './Pipes/usdto-egp.pipe';
     HeaderComponent,
     SideBarComponent,
    StarsComponent,
-   ProductListComponent,
+   OrderComponent,
    LightBoxDirective,
    InputFieldDirective,
    USDtoEGPPipe,
+   ProductTableComponent,
+   OrderTableComponent,
   ],
   imports: [
     BrowserModule,

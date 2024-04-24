@@ -1,0 +1,36 @@
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Avilable Quantity</th>
+            <th>EGP Price</th>
+            <th>USD Price</th>
+            <th>Count</th>
+            <th>Buy</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of prodList; let i=index"
+            [style.background-color]="(item.quantity ==0)? 'red':'green' ">
+            <td>{{i+1}}</td>
+            <td>{{item.name}}</td>
+            <td><img LightBox defaultColor="red" HighlightedColor="green"
+                    [src]="item.imgUrl"
+                    alt="Product Image"></td>
+            <td>
+                <div *ngIf="item.quantity !=0; else outOfStock">
+                    {{item.quantity}}</div>
+                <ng-template #outOfStock> Out Of
+                    Stock</ng-template>
+            </td>
+            <td>{{item.price | currency:'EGP':'symbol'}}</td>
+            <td>{{item.price | uSDtoEGP| currency:'USD'}}</td>
+            <td><input #count class="form-control" type="number"></td>
+            <td><button class="btn btn-primary"
+                    (click)="Buy(item.price,count.value)">
+                    Buy</button></td>
+        </tr>
+    </tbody>
+</table>

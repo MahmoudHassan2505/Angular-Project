@@ -1,20 +1,21 @@
 import { Component } from '@angular/core';
-import { IProduct } from '../../../Models/iproduct';
-import { ICategory } from '../../../Models/icategory';
+import { IProduct } from '../../Models/iproduct';
+import { ICategory } from '../../Models/icategory';
+
 
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrl: './product-list.component.css'
+  selector: 'app-order',
+  templateUrl: './order.component.html',
+  styleUrl: './order.component.css'
 })
-export class ProductListComponent {
+export class OrderComponent {
 
   totalPrice:number = 0;
   productList:IProduct[];
   filterdProductList:IProduct[];
   categortList:ICategory[];
   selectedCategoryId:number=0;
-  orderDate: Date;
+  orderDate: Date;  
 
   constructor(){
     this.orderDate = new Date;
@@ -46,9 +47,7 @@ export class ProductListComponent {
     
   }
 
-  Buy(price: number, count:any) {
-    this.totalPrice+=price*count;
-  }
+
   changeCategory() {
     this.selectedCategoryId =1;
     }
@@ -60,4 +59,5 @@ export class ProductListComponent {
 filterProductByCategoryId() {
       this.filterdProductList = this.productList.filter(x=>x.categoryID==this.selectedCategoryId);
       }
+
 }
