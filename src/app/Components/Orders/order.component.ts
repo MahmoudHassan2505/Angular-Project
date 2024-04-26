@@ -57,7 +57,11 @@ export class OrderComponent {
   //     }
 
 filterProductByCategoryId() {
-      this.filterdProductList = this.productList.filter(x=>x.categoryID==this.selectedCategoryId);
+      if(this.selectedCategoryId===0){
+        this.filterdProductList = this.productList;
+      }else{
+        this.filterdProductList = this.productList.filter(x=>x.categoryID==this.selectedCategoryId);
+      }
       }
 
 }
