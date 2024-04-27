@@ -29,7 +29,7 @@
             <td>{{item.price | uSDtoEGP| currency:'USD'}}</td>
             <td><input #count class="form-control" type="number"></td>
             <td><button class="btn btn-primary"
-                    (click)="Buy(item.price,count.value)">
+                    (click)="Buy(item,count.value)">
                     Buy</button></td>
         </tr>
     </tbody>

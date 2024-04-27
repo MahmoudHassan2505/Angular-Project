@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IProduct } from '../../Models/iproduct';
 import { ICategory } from '../../Models/icategory';
+import { OrderItem } from '../../Models/order-item';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class OrderComponent {
   categortList:ICategory[];
   selectedCategoryId:number=0;
   orderDate: Date;  
-
+  Oreder: OrderItem[]=[];
+  
   constructor(){
     this.orderDate = new Date;
 

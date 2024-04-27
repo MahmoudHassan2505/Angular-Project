@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { OrderItem } from '../../Models/order-item';
 
 @Component({
   selector: 'app-order-table',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrl: './order-table.component.css'
 })
 export class OrderTableComponent {
+@Input() orderList: OrderItem[]=[];
+
+Remove(id:number):void{
+this.orderList = this.orderList.filter(item=>item.id !== id);
+}
 
 }

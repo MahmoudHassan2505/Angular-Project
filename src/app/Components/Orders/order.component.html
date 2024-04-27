@@ -15,9 +15,13 @@
 <!-- [prodList]="filterdProductList" input data to be viewed
 (totalPriceEmitter)="$event" the name of eventEmitter Object in the Child
 Component -->
-<app-product-table [prodList]="filterdProductList"
-    (totalPriceEmitter)="totalPrice= $event"></app-product-table>
-
+<div class="row">
+    <div class="col-8"><app-product-table [prodList]="filterdProductList"
+            (totalPriceEmitter)="totalPrice= $event"
+            (orderItem)="Oreder.push($event)"></app-product-table></div>
+    <div class="col-4 bg-dark"><app-order-table
+            [orderList]="Oreder"></app-order-table></div>
+</div>
 <!-- <tbody>
         <tr *ngFor="let item of productList; let i=index trackBy: prodTrackFn"
             [class.d-none]="selectedCategoryId != item.categoryID || selectedCategoryId==0"
