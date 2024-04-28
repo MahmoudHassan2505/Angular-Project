@@ -15,6 +15,9 @@ totalPrice:number=0;
 @Output() orderItem = new EventEmitter<OrderItem>();
 
 Buy(item:IProduct,count:any) {
+  if(count==0){
+    return;
+  }
   this.totalPrice+=item.price*count;
   //this wiill emit the new value
   this.totalPriceEmitter.emit(this.totalPrice);
