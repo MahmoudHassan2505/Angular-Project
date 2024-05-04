@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { IProduct } from '../Models/iproduct';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root'  // 1) this make class implemented as singletone and this class can be seen by other modules
+                      //  2)  we can replcace 'root' with name of module this mean it will be shared by this module only
+                      //  3)  we can relace it with 'any'  this mean all eager loaded module see only one and each lazy loaded see diffrerent objects
 })
   export class ProductServiceService {
     private productList:IProduct[];

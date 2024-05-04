@@ -21,7 +21,7 @@
 Component -->
 <div class="row">
     <div class="col-8">
-        <app-product-table
+        <app-product-table [prodList]="productList"
             (totalPriceEmitter)="totalPrice= $event"
             (orderItem)="Oreder.push($event)"></app-product-table>
     </div>
