@@ -7,8 +7,11 @@
 
 <hr>
 <div class="row">
-    <div class="col-6">Today's Date: {{orderDate |date:'longDate'}}</div>
-    <div class="col-6">Total price: {{totalPrice | currency}}</div>
+    <div class="col-8">Today's Date: {{orderDate |date:'longDate'}}</div>
+    <div class="col-2">Total price: {{totalPrice | currency}}</div>
+    <div class="col-2">
+        <button class="btn btn-primary">Check Out</button>
+    </div>
 </div>
 <hr>
 <div>

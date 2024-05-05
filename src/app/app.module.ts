@@ -14,6 +14,7 @@ import { USDtoEGPPipe } from './Pipes/usdto-egp.pipe';
 import { ProductTableComponent } from './Components/product-table/product-table.component';
 import { OrderComponent } from './Components/Orders/order.component';
 import { OrderTableComponent } from './Components/order-table/order-table.component';
+import { NotFoundComponent } from './Components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { OrderTableComponent } from './Components/order-table/order-table.compon
    USDtoEGPPipe,
    ProductTableComponent,
    OrderTableComponent,
+   NotFoundComponent,
   ],
   imports: [
     BrowserModule,
