@@ -1,0 +1,39 @@
+/* product-details.component.css */
+
+.product-details-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.product-details-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.product-info {
+  margin-top: 20px;
+}
+
+.product-info h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.product-info p {
+  margin: 5px 0;
+}
+
+.center {
+  padding-left: 35%;
+}

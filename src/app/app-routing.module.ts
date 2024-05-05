@@ -7,6 +7,7 @@ import { StarsComponent } from './Components/stars/stars.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { LoginComponent } from './Components/login/login.component';
 import { MainLayoutComponent } from './Components/main-layout/main-layout.component';
+import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 
 //contain root paths and it's component
 const routes: Routes = [
@@ -25,6 +26,10 @@ const routes: Routes = [
       {
         path:'cart',
         component:OrderTableComponent
+      },
+      {
+        path:'products/:pid',
+        component:ProductDetailsComponent
       },
     ]
     },

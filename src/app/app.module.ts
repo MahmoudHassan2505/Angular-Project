@@ -17,6 +17,7 @@ import { OrderTableComponent } from './Components/order-table/order-table.compon
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { LoginComponent } from './Components/login/login.component';
 import { MainLayoutComponent } from './Components/main-layout/main-layout.component';
+import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { MainLayoutComponent } from './Components/main-layout/main-layout.compon
    NotFoundComponent,
    LoginComponent,
    MainLayoutComponent,
+   ProductDetailsComponent,
   ],
   imports: [
     BrowserModule,
