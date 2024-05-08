@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { StoreData } from '../../ViewModels/store-data';
+import { PromotionAdsService } from '../../Services/promotion-ads.service';
+import { Observer, Subscriber, Subscription } from 'rxjs';
 
 
 
@@ -9,16 +11,34 @@ import { StoreData } from '../../ViewModels/store-data';
   templateUrl: './stars.component.html',
   styleUrl: './stars.component.css',
 })
-export class StarsComponent{
+export class StarsComponent implements OnInit,OnDestroy{
+  addSubs!:Subscription;
   toogleImage() {
     this.isImageShown = !this.isImageShown
   }
   
     storeInfo:StoreData
     isImageShown:boolean = true;
-    constructor(){
+    constructor(private adsService:PromotionAdsService){
       this.storeInfo=new StoreData('Ghania Store',"https://picsum.photos/200",["Cairo","Gize","Alex"]);
     }
-  
+
+  ngOnInit(): void {
+    let observer ={
+      next:(data:string)=>{
+        console.log(data)
+      },
+      error:(err:string)=>{
+        console.log(err)
+      },
+      complete:()=>{
+        console.log("completed")
+      }      
+    };
+    this.addSubs=this.adsService.getScheduledAds().subscribe(observer);
+  }
+  ngOnDestroy(): void {
+    this.addSubs.unsubscribe()
+  } 
     
   }
