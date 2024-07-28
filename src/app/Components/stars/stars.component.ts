@@ -13,6 +13,7 @@ import { Observer, Subscriber, Subscription } from 'rxjs';
 })
 export class StarsComponent implements OnInit,OnDestroy{
   addSubs!:Subscription;
+  sub!:Subscription;
   toogleImage() {
     this.isImageShown = !this.isImageShown
   }
@@ -36,9 +37,15 @@ export class StarsComponent implements OnInit,OnDestroy{
       }      
     };
     this.addSubs=this.adsService.getScheduledAds().subscribe(observer);
+    this.sub = this.adsService.getSerialAds().subscribe(
+      ad=>{
+        console.log(ad);
+      }
+    );
   }
   ngOnDestroy(): void {
     this.addSubs.unsubscribe()
+    this.sub.unsubscribe();
   } 
     
   }

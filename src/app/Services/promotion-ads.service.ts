@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, from, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -42,4 +42,10 @@ export class PromotionAdsService {
       }
     },);
   }
+  
+  getSerialAds():Observable<string>{
+    return from(this.adsList);  //the form operator:take a data structre elemen and return an observable by looping through each element
+   //return of("ad1","ad2","ad3") //the of operator:take a list of item
+  }
+
 }
