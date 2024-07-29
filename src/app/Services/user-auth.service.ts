@@ -24,7 +24,7 @@ export class UserAuthService {
   }
 
   get isUserLogged(){
-   return localStorage.getItem('tokne')? true:false 
+   return localStorage.getItem('token')? true:false 
   }
 
   statusSubject(){
