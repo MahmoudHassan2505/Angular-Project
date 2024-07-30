@@ -7,9 +7,9 @@ import { environment } from '../../environments/environment.development';
 @Injectable({
   providedIn: 'root'
 })
-export class HttpProductServicesService {
+export class HttpProductServices {
 
-  productEndPoint ="/products";
+  productEndPoint ="products";
 
   constructor(private http:HttpClient) { }
 

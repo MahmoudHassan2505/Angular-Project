@@ -3,7 +3,7 @@ import { IProduct } from '../../Models/iproduct';
 import { ICategory } from '../../Models/icategory';
 import { OrderItem } from '../../Models/order-item';
 import { ProductTableComponent } from '../product-table/product-table.component';
-import { ProductServiceService } from '../../Services/product-service.service';
+import { HttpProductServices } from '../../Services/http-product-services.service';
 
 
 @Component({
@@ -29,16 +29,21 @@ export class OrderComponent implements AfterViewInit,OnChanges,OnInit{
  @ViewChild(ProductTableComponent) prodTable!:ProductTableComponent;
 
   
-  constructor(private productservice:ProductServiceService){
+  constructor(private productservice:HttpProductServices,){
     this.orderDate = new Date;
     this.categortList = [{id:1,name:'Laptops'},{id:2,name:'Cars'},{id:3,name:'Periphrals'}];
     
   }
   ngOnInit(): void {
-    this.productList=this.productservice.getAllProduct();
+   this.productservice.getAllProduct().subscribe(x=>{
+    this.productList = x;
+    console.log(x)
+   });
   }
   ngOnChanges(): void {
-    this.productList=this.productservice.getProductByCatId(this.selectedCategoryId);
+    this.productservice.getProductByCatId(this.selectedCategoryId).subscribe(x=>{
+      this.productList=x;
+    });
   }
   ngAfterViewInit(): void {
     this.ClientNameInput.nativeElement.value ="Name"
