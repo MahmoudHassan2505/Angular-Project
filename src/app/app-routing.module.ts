@@ -9,6 +9,7 @@ import { LoginComponent } from './Components/login/login.component';
 import { MainLayoutComponent } from './Components/main-layout/main-layout.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { authGuard } from './Gaurds/auth.guard';
+import { AddProductComponent } from './Components/add-product/add-product.component';
 
 //contain root paths and it's component
 const routes: Routes = [
@@ -32,6 +33,10 @@ const routes: Routes = [
       {
         path:'products/:pid',
         component:ProductDetailsComponent
+      },
+      {
+        path:'add',
+        component:AddProductComponent
       },
     ]
     },

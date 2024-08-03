@@ -1,0 +1,61 @@
+<div class="text-danger">
+    <h3>To be Removed [For Test]</h3>
+    <div>
+        {{newProduct | json}}
+    </div>
+    <div>{{prdName.errors | json}}</div>
+</div>
+
+<div class="container">
+    <form (ngSubmit)="onSumbit()" #formValidator="ngForm">
+        <div class="form-group mt-5">
+            <label for="pName">Product Name</label>
+            <input #prdName="ngModel" required pattern="[A-Za-z]{3}" type="text"
+                class="form-control"
+                id="pName"
+                name="pName"
+                placeholder="Enter Product Name"
+                [(ngModel)]="newProduct.name">
+            <div class="alert alert-warning"
+                [hidden]="prdName.valid || prdName.untouched">
+                <small [hidden]="!prdName.errors?.['required']"> Name is
+                    Required</small>
+                <small [hidden]="!prdName.errors?.['pattern']"> Name must be 3
+                    letter at
+                    least</small>
+            </div>
+        </div>
+        <div class="form-group mt-3">
+            <label for="pPrice">Product Price</label>
+            <input required type="number" class="form-control" id="pPrice"
+                name="pPrice"
+                placeholder="Enter Product Price" min="1"
+                [(ngModel)]="newProduct.price">
+        </div>
+        <div class="form-group mt-3">
+            <label for="pQuantity">Product Quantity</label>
+            <input required type="number" class="form-control" id="pQuantity"
+                name="pQuantity"
+                placeholder="Enter Product Quantity" min="1"
+                [(ngModel)]="newProduct.quantity">
+        </div>
+        <div class="form-group mt-3">
+            <label for="pCategory">Product Category</label>
+            <select required name="cat" id="pCategory" class="form-select"
+                [(ngModel)]="newProduct.categoryID">
+                <option *ngFor="let cat of categortList"
+                    [value]="cat.id">{{cat.name}}</option>
+            </select>
+        </div>
+        <div class="form-group mt-3">
+            <label for="pImg">Product Quantity</label>
+            <input type="file" class="form-control" id="pImg"
+                name="pImg"
+                placeholder="Enter Product Quantity"
+                [(ngModel)]="newProduct.imgUrl">
+        </div>
+        <button type="submit" class="btn btn-primary mt-3"
+            [disabled]="!formValidator.valid">Submit</button>
+    </form>
+
+</div>
