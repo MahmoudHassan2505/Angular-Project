@@ -10,6 +10,7 @@ import { MainLayoutComponent } from './Components/main-layout/main-layout.compon
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { authGuard } from './Gaurds/auth.guard';
 import { AddProductComponent } from './Components/add-product/add-product.component';
+import { UserRegisterComponent } from './Components/user-register/user-register.component';
 
 //contain root paths and it's component
 const routes: Routes = [
@@ -49,6 +50,10 @@ const routes: Routes = [
   {
     path:'login',
     component:LoginComponent
+  },
+  {
+    path:'register',
+    component:UserRegisterComponent
   },
   {//wild card path
     path:'**', //mean any othe paths

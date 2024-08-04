@@ -7,7 +7,7 @@ import { HeaderComponent } from './Components/header/header.component';
 import { SideBarComponent } from './Components/side-bar/side-bar.component';
 import { StarsComponent } from './Components/stars/stars.component';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LightBoxDirective } from './Directives/light-box.directive';
 import { InputFieldDirective } from './Directives/input-field.directive';
 import { USDtoEGPPipe } from './Pipes/usdto-egp.pipe';
@@ -20,6 +20,7 @@ import { MainLayoutComponent } from './Components/main-layout/main-layout.compon
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AddProductComponent } from './Components/add-product/add-product.component';
+import { UserRegisterComponent } from './Components/user-register/user-register.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AddProductComponent } from './Components/add-product/add-product.compon
    MainLayoutComponent,
    ProductDetailsComponent,
    AddProductComponent,
+   UserRegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +47,7 @@ import { AddProductComponent } from './Components/add-product/add-product.compon
     RouterModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
