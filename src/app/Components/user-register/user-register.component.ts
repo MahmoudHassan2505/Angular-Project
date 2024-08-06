@@ -50,6 +50,8 @@ export class UserRegisterComponent implements OnInit {
       ],
       password: [''],
       confirmPassword: [''],
+      referral: [''],
+      referralOther: [''],
     });
   }
 
@@ -65,6 +67,10 @@ export class UserRegisterComponent implements OnInit {
 
   get mobileNumber() {
     return this.userRegisterForm.get('mobileNumber') as FormArray;
+  }
+
+  get referral() {
+    return this.userRegisterForm.get('referral');
   }
 
   fillForm() {
@@ -100,5 +106,18 @@ export class UserRegisterComponent implements OnInit {
 
   addNumebr() {
     this.mobileNumber.push(new FormControl(''));
+  }
+
+  UpdateReferralValidator() {
+    if (this.referral?.value == 'Other') {
+      this.userRegisterForm
+        .get('referralOther')
+        ?.addValidators([Validators.required]);
+    } else {
+      this.userRegisterForm.get('referralOther')?.clearValidators();
+    }
+
+    //after adding or removing validator we call the following function to update the validations
+    this.userRegisterForm.get('referralOther')?.updateValueAndValidity();
   }
 }
