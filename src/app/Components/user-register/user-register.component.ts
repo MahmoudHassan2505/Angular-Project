@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {
+  FormArray,
   FormBuilder,
   FormControl,
   FormGroup,
@@ -34,7 +35,7 @@ export class UserRegisterComponent implements OnInit {
     // Using Form Builder
     this.userRegisterForm = fb.group({
       fullName: ['', [Validators.required, Validators.pattern('[A-Za-z]{3,}')]],
-      mobileNumber: [''],
+      mobileNumber: fb.array(['']),
       address: fb.group({
         city: [''],
         postalCode: [''],
@@ -62,6 +63,10 @@ export class UserRegisterComponent implements OnInit {
     return this.userRegisterForm.get('email');
   }
 
+  get mobileNumber() {
+    return this.userRegisterForm.get('mobileNumber') as FormArray;
+  }
+
   fillForm() {
     // In Case Edit Profile
     //THis way we will set one Value in each line
@@ -80,7 +85,7 @@ export class UserRegisterComponent implements OnInit {
     //if we want to set just some parameter
     this.userRegisterForm.patchValue({
       fullName: 'asd',
-      mobileNumber: '123123',
+      mobileNumber: ['123123'],
       address: { city: 'asd', postalCode: '', street: 'asd' },
       email: 'asd@asd.com',
     });
@@ -91,5 +96,9 @@ export class UserRegisterComponent implements OnInit {
     console.log(userModel);
     //clear form
     this.userRegisterForm.reset();
+  }
+
+  addNumebr() {
+    this.mobileNumber.push(new FormControl(''));
   }
 }
