@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { User } from '../../Models/user';
 
 @Component({
   selector: 'app-user-register',
@@ -39,7 +40,13 @@ export class UserRegisterComponent implements OnInit {
         postalCode: [''],
         street: [''],
       }),
-      email: ['', [Validators.required]],
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
+        ],
+      ],
       password: [''],
       confirmPassword: [''],
     });
@@ -49,6 +56,10 @@ export class UserRegisterComponent implements OnInit {
 
   get fullName() {
     return this.userRegisterForm.get('fullName');
+  }
+
+  get email() {
+    return this.userRegisterForm.get('email');
   }
 
   fillForm() {
@@ -73,5 +84,12 @@ export class UserRegisterComponent implements OnInit {
       address: { city: 'asd', postalCode: '', street: 'asd' },
       email: 'asd@asd.com',
     });
+  }
+
+  submit() {
+    let userModel: User = this.userRegisterForm.value;
+    console.log(userModel);
+    //clear form
+    this.userRegisterForm.reset();
   }
 }
