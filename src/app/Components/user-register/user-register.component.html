@@ -21,6 +21,14 @@
                 id="uemail" name="uemail"
                 placeholder="Enter Email" [class.is-invalid]="email?.invalid"
                 [class.is-valid]="email?.valid">
+            <div class="alert alert-warning"
+                [hidden]="email?.valid || email?.untouched">
+                <small *ngIf="email?.errors?.['required']">Email is
+                    required</small>
+                <small *ngIf="email?.errors?.['EmailNotValid']">Not a Valid
+                    Email
+                    Address, {{email?.errors?.['EmailNotValid'].value}}</small>
+            </div>
         </div>
         <div formArrayName="mobileNumber">
             <div class="mt-3 ms-5"

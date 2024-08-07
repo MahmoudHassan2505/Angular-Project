@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {
+  AbstractControl,
   FormArray,
   FormBuilder,
   FormControl,
   FormGroup,
+  ValidationErrors,
+  ValidatorFn,
   Validators,
 } from '@angular/forms';
 import { User } from '../../Models/user';
@@ -41,13 +44,7 @@ export class UserRegisterComponent implements OnInit {
         postalCode: [''],
         street: [''],
       }),
-      email: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
-        ],
-      ],
+      email: ['', [Validators.required, this.existEmailValidator()]],
       password: [''],
       confirmPassword: [''],
       referral: [''],
@@ -119,5 +116,22 @@ export class UserRegisterComponent implements OnInit {
 
     //after adding or removing validator we call the following function to update the validations
     this.userRegisterForm.get('referralOther')?.updateValueAndValidity();
+  }
+
+  //Custom Validator:
+  // Validator is a function that return Validator function
+  //Sync Validator Function
+  existEmailValidator(): ValidatorFn {
+    return (cotrol: AbstractControl): ValidationErrors | null => {
+      let emailVlue: string = cotrol.value;
+      let validationError = {
+        EmailNotValid: { value: emailVlue },
+      };
+      return emailVlue.includes('@') ||
+        emailVlue.length == 0 ||
+        cotrol.untouched
+        ? null
+        : validationError;
+    };
   }
 }
