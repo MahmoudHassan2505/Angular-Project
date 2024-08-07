@@ -134,4 +134,10 @@ export class UserRegisterComponent implements OnInit {
         : validationError;
     };
   }
+
+  /* async Validator Function:
+      Take control instance and return Promise or
+      Observable that later emits a set of validation error or null
+  */
+  asyncEmailValidator() {}
 }
