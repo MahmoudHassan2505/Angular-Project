@@ -10,6 +10,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { User } from '../../Models/user';
+import { passwordValidator } from '../../CustomValidator/PasswordMatch';
 
 @Component({
   selector: 'app-user-register',
@@ -36,20 +37,26 @@ export class UserRegisterComponent implements OnInit {
     // })
 
     // Using Form Builder
-    this.userRegisterForm = fb.group({
-      fullName: ['', [Validators.required, Validators.pattern('[A-Za-z]{3,}')]],
-      mobileNumber: fb.array(['']),
-      address: fb.group({
-        city: [''],
-        postalCode: [''],
-        street: [''],
-      }),
-      email: ['', [Validators.required, this.existEmailValidator()]],
-      password: [''],
-      confirmPassword: [''],
-      referral: [''],
-      referralOther: [''],
-    });
+    this.userRegisterForm = fb.group(
+      {
+        fullName: [
+          '',
+          [Validators.required, Validators.pattern('[A-Za-z]{3,}')],
+        ],
+        mobileNumber: fb.array(['']),
+        address: fb.group({
+          city: [''],
+          postalCode: [''],
+          street: [''],
+        }),
+        email: ['', [Validators.required, this.existEmailValidator()]],
+        password: ['', [Validators.required]],
+        confirmPassword: [''],
+        referral: [''],
+        referralOther: [''],
+      },
+      { validators: passwordValidator() }
+    );
   }
 
   ngOnInit(): void {}
@@ -68,6 +75,14 @@ export class UserRegisterComponent implements OnInit {
 
   get referral() {
     return this.userRegisterForm.get('referral');
+  }
+
+  get confirmPassword() {
+    return this.userRegisterForm.get('confirmPassword');
+  }
+
+  get password() {
+    return this.userRegisterForm.get('password');
   }
 
   fillForm() {
