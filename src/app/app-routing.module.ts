@@ -15,55 +15,63 @@ import { UserRegisterComponent } from './Components/user-register/user-register.
 //contain root paths and it's component
 const routes: Routes = [
   {
-    path:'v1',
-    component:MainLayoutComponent,
-    children:[
+    path: 'v1',
+    component: MainLayoutComponent,
+    children: [
       {
-        path:'home',
-        component:StarsComponent
+        path: 'home',
+        component: StarsComponent,
       },
       {
-        path:'products',
-        component:OrderComponent
+        path: 'products',
+        component: OrderComponent,
       },
       {
-        path:'cart',
-        component:OrderTableComponent,
-        canActivate:[authGuard]
+        path: 'cart',
+        component: OrderTableComponent,
+        canActivate: [authGuard],
       },
       {
-        path:'products/:pid',
-        component:ProductDetailsComponent
+        path: 'products/:pid',
+        component: ProductDetailsComponent,
       },
       {
-        path:'add',
-        component:AddProductComponent
+        path: 'add',
+        component: AddProductComponent,
       },
-    ]
-    },
-  {
-  path:'',
-  redirectTo:'login',
-  pathMatch:'full' //mathc full path
-  },
-  
-  {
-    path:'login',
-    component:LoginComponent
+      {
+        path: 'user',
+        loadChildren: () =>
+          import('./Components/user-module/user-module.module').then(
+            (m) => m.UserModuleModule
+          ),
+        canActivate: [authGuard],
+      },
+    ],
   },
   {
-    path:'register',
-    component:UserRegisterComponent
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full', //mathc full path
   },
-  {//wild card path
-    path:'**', //mean any othe paths
-    component:NotFoundComponent
-  }
+
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'register',
+    component: UserRegisterComponent,
+  },
+  {
+    //wild card path
+    path: '**', //mean any othe paths
+    component: NotFoundComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { 
-}
+export class AppRoutingModule {}
